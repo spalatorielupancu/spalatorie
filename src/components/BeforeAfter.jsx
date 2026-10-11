@@ -1,29 +1,21 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 
 // Slider „Înainte / După”. Funcționează cu mouse, deget și tastatură
 // (input range invizibil deasupra, deci e accesibil și pentru cititoare de ecran).
-export default function BeforeAfter({ before, after, alt, demo }) {
+export default function BeforeAfter({ before, after, alt }) {
   const [pos, setPos] = useState(50);
-  const boxRef = useRef(null);
 
   return (
-    <div className="ba" ref={boxRef} style={{ '--pos': `${pos}%` }}>
+    <div className="ba" style={{ '--pos': `${pos}%` }}>
       <img className="ba-img" src={after} alt={`${alt} — după`} loading="lazy" decoding="async" />
       <div className="ba-before" aria-hidden="true">
-        <img
-          className={`ba-img${demo ? ' ba-img--demo-dirty' : ''}`}
-          src={before}
-          alt=""
-          loading="lazy"
-          decoding="async"
-        />
+        <img className="ba-img" src={before} alt="" loading="lazy" decoding="async" />
       </div>
 
       <span className="ba-label ba-label--before">Înainte</span>
       <span className="ba-label ba-label--after">După</span>
-      {demo && <span className="ba-demo">Imagine demonstrativă</span>}
 
       <div className="ba-handle" aria-hidden="true">
         <span className="ba-knob">

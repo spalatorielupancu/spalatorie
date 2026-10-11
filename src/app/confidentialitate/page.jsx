@@ -37,8 +37,8 @@ export default function Confidentialitate() {
         <h2>Servicii externe</h2>
         <ul>
           <li>
-            <strong>Google Maps</strong>: harta se încarcă doar dacă apeși „Afișează harta”. Din acel moment se aplică
-            politica de confidențialitate Google.
+            <strong>Hărți</strong>: site-ul nu încarcă hărți. Linkurile spre hartă deschid Google Maps sau, pe iPhone și
+            iPad, Apple Maps; fiecare are propria politică de confidențialitate.
           </li>
           <li>
             <strong>WhatsApp și Facebook</strong>: linkurile deschid aplicațiile respective, care au propriile politici.

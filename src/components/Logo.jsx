@@ -1,9 +1,9 @@
 // Semnul din logo (picătura + arcele), refăcut ca SVG după materialele clientului.
 // TODO: înlocuiește cu fișierul original al logo-ului când îl primești de la client.
-export function LogoMark({ className = '', draw = false, title }) {
+export function LogoMark({ className = '', title }) {
   return (
     <svg
-      className={`logo-mark${draw ? ' logo-mark--draw' : ''} ${className}`}
+      className={`logo-mark ${className}`}
       viewBox="0 0 100 100"
       fill="none"
       stroke="currentColor"

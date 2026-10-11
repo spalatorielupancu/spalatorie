@@ -27,8 +27,18 @@ export const whatsapp = {
 };
 export const whatsappUrl = `https://wa.me/${whatsapp.number}?text=${encodeURIComponent(whatsapp.message)}`;
 
+// Meniul site-ului (folosit în header și în footer)
+export const navLinks = [
+  { href: '/#servicii', label: 'Servicii' },
+  { href: '/#galerie', label: 'Galerie' },
+  { href: '/#cum-lucram', label: 'Cum lucrăm' },
+  { href: '/#zona', label: 'Zona' },
+  { href: '/#contact', label: 'Contact' },
+];
+
 // TODO: înlocuiește cu link-ul real al paginii de Facebook
-export const facebookUrl = 'https://www.facebook.com/';
+// Cât timp e gol, butoanele de Facebook nu apar pe site.
+export const facebookUrl = '';
 
 export const location = {
   locality: 'Satu Mare',
@@ -38,11 +48,13 @@ export const location = {
   street: '',
   lat: 47.8366948,
   lng: 25.992857,
-  mapsUrl:
-    'https://www.google.com/maps/place/Spalatoria+Lupancu/@47.8367087,25.9825573,15z/data=!4m6!3m5!1s0x4734456697e3c335:0xf3dafa264248813f!8m2!3d47.8366948!4d25.992857',
+  mapsUrl: 'https://maps.app.goo.gl/aTnDJJHDGhdny8xz5',
 };
 
-// TODO: confirmă lista de localități pentru ridicare/livrare
+// Pe iPhone / iPad, linkurile spre hartă deschid Apple Maps (pin pe coordonatele exacte).
+export const appleMapsUrl = `https://maps.apple.com/?q=${encodeURIComponent(site.name)}&ll=${location.lat},${location.lng}`;
+
+// TODO: confirmă lista de localități pentru ridicare/livrare (nu se afișează pe pagină, e folosită pentru Google)
 export const serviceArea = [
   'Satu Mare',
   'Rădăuți',
@@ -68,26 +80,39 @@ export const company = {
 const unsplash = (id, w = 1200) =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=72`;
 
+// Hero: poză luminoasă, aceeași pe telefon și pe desktop, în 4 mărimi (telefonul descarcă varianta mică).
+const heroId = 'photo-1534889156217-d643df14f14a'; // sufragerie albă, luminoasă, cu un covor oriental
+export const heroImage = {
+  src: unsplash(heroId, 2400),
+  srcSet: [600, 1000, 1600, 2400].map((w) => `${unsplash(heroId, w)} ${w}w`).join(', '),
+  alt: 'Sufragerie luminoasă cu un covor oriental curat',
+};
+
 export const images = {
-  hero: unsplash('photo-1531162805941-58330188d75c', 1800), // covor cu motive florale albastre/verzi
-  rug: unsplash('photo-1660394585016-508f949df960'), // covor persan roșu
+  hero: heroImage.src,
+  og: unsplash('photo-1531162805941-58330188d75c', 1800), // previzualizare WhatsApp/Facebook
   rugFringe: unsplash('photo-1600166898405-da9535204843'), // covor cu franjuri
-  carpetClean: unsplash('photo-1742483359033-13315b247c74'), // persoană care curăță un covor
-  vacuum: unsplash('photo-1527515637462-cff94eecc1ac'), // aspirare covor
+  carpet: unsplash('photo-1786361928673-02a91f8c92ac'), // mochetă în lumină laterală
   sofa: unsplash('photo-1686178827149-6d55c72d81df'), // curățare tapițerie
   mattress: unsplash('photo-1759176171441-7afca44a5558'), // saltea matlasată
   car: unsplash('photo-1771491237218-cbd4a707497e'), // detailing interior auto
   blankets: unsplash('photo-1734553529922-bc020a21643b'), // pături împăturite
 };
 
-// Înainte / după — TODO: înlocuiește cu o pereche REALĂ de poze ale clientului
-// și setează demo: false. Cât timp demo e true, pe imagine apare eticheta „Imagine demonstrativă”.
-export const beforeAfter = {
-  demo: true,
-  before: images.rug,
-  after: images.rug,
-  alt: 'Covor persan înainte și după spălarea profesională',
-};
+// Galerie — TODO: înlocuiește cu poze REALE ale clientului (covoare spălate, atelier, livrări).
+// Primele 6 poze se afișează în grilă; prima e cea mare.
+export const gallery = [
+  { src: unsplash('photo-1777829760115-690421df9d6a', 1400), caption: 'Uscare la aer', alt: 'Covoare persane întinse la uscat' },
+  { src: unsplash('photo-1760519663238-6cfdf81416db', 800), caption: 'Culori vii', alt: 'Covor cu model geometric în lumina soarelui' },
+  { src: unsplash('photo-1671576518293-113ca5c64648', 800), caption: 'Lână, rulată', alt: 'Covor din lână rulat, în prim-plan' },
+  { src: unsplash('photo-1764432857157-68c81f3e870d', 800), caption: 'Franjuri', alt: 'Marginea cu franjuri a unui covor roșu' },
+  { src: unsplash('photo-1756361771334-2185911bfff5', 800), caption: 'Medalion persan', alt: 'Detaliu de medalion floral pe un covor persan' },
+  { src: unsplash('photo-1726207285967-e27f20a27f1a', 800), caption: 'Fibre de lână', alt: 'Textura fibrelor de lână ale unui covor' },
+];
+
+// Înainte / după — se afișează DOAR când există o pereche reală de poze a clientului.
+// TODO: completează cu { before: '/images/inainte.webp', after: '/images/dupa.webp', alt: '...' }
+export const beforeAfter = null;
 
 // ------------------------------------------------------------
 //  SERVICII
@@ -117,7 +142,7 @@ export const services = [
     where: 'domiciliu',
     title: 'Mochetă lipită',
     text: 'Curățare prin injecție-extracție direct la tine, fără să dezlipim nimic. Potrivit pentru case, birouri și spații comerciale.',
-    image: images.vacuum,
+    image: images.carpet,
     alt: 'Curățare profesională a mochetei',
   },
   {
@@ -167,22 +192,18 @@ export const steps = [
 
 export const features = [
   {
-    icon: 'shield',
     title: 'Utilaje profesionale',
     text: 'Echipamente dedicate pentru spălare, centrifugare și uscare.',
   },
   {
-    icon: 'spark',
     title: 'Pete și mirosuri',
     text: 'Tratăm petele vechi și eliminăm mirosurile, nu doar le acoperim.',
   },
   {
-    icon: 'waves',
     title: 'Uscare și igienizare',
     text: 'Uscare rapidă și completă, fără mucegai sau miros de umezeală.',
   },
   {
-    icon: 'truck',
     title: 'Ridicare și livrare',
     text: 'Nu cari nimic: venim după covoare și le aducem înapoi.',
   },

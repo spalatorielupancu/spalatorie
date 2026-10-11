@@ -37,7 +37,7 @@ export const metadata = {
     title: `${site.name} — ${site.tagline}`,
     description: site.description,
     // TODO: o imagine 1200×630 proprie în /public/og.jpg arată mult mai bine la distribuirea pe WhatsApp/Facebook
-    images: [{ url: images.hero, width: 1800, height: 1200, alt: site.name }],
+    images: [{ url: images.og, width: 1800, height: 1200, alt: site.name }],
   },
   formatDetection: { telephone: true },
 };
@@ -53,7 +53,7 @@ const jsonLd = {
   name: site.name,
   description: site.description,
   url: site.url,
-  image: images.hero,
+  image: images.og,
   telephone: phones.map((p) => p.tel),
   address: {
     '@type': 'PostalAddress',
