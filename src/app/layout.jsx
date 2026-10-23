@@ -1,4 +1,5 @@
 import { Instrument_Serif, Manrope } from 'next/font/google';
+import { preconnect } from 'react-dom';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -72,6 +73,9 @@ const jsonLd = {
 };
 
 export default function RootLayout({ children }) {
+  // conexiunea spre serverul de poze se deschide din timp, ca poza din hero să apară mai repede
+  preconnect('https://images.unsplash.com');
+
   return (
     <html lang="ro" className={`${display.variable} ${sans.variable}`} suppressHydrationWarning>
       <body>

@@ -80,11 +80,13 @@ export const company = {
 const unsplash = (id, w = 1200) =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=72`;
 
-// Hero: poză luminoasă, aceeași pe telefon și pe desktop, în 4 mărimi (telefonul descarcă varianta mică).
+// Hero: poză luminoasă, aceeași pe telefon și pe desktop, în mai multe mărimi.
 const heroId = 'photo-1534889156217-d643df14f14a'; // sufragerie albă, luminoasă, cu un covor oriental
 export const heroImage = {
   src: unsplash(heroId, 2400),
-  srcSet: [600, 1000, 1600, 2400].map((w) => `${unsplash(heroId, w)} ${w}w`).join(', '),
+  srcSet: [1000, 1600, 2400].map((w) => `${unsplash(heroId, w)} ${w}w`).join(', '),
+  // pe telefon: cel mult 1000 px, chiar și pe ecranele de înaltă densitate (încărcare mai rapidă)
+  mobileSrcSet: [600, 1000].map((w) => `${unsplash(heroId, w)} ${w}w`).join(', '),
   alt: 'Sufragerie luminoasă cu un covor oriental curat',
 };
 

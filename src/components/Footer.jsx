@@ -27,6 +27,26 @@ export default function Footer() {
             <p>
               Spălătorie de covoare în {location.locality}, jud. {location.county}. Ridicare și livrare la domiciliu.
             </p>
+            <ul className="footer-social">
+              {facebookUrl && (
+                <li>
+                  <a href={facebookUrl} {...ext} aria-label="Facebook">
+                    <Icon name="facebook" size={20} />
+                  </a>
+                </li>
+              )}
+              <li>
+                <a href={whatsappUrl} {...ext} aria-label="WhatsApp">
+                  <Icon name="whatsapp" size={20} />
+                </a>
+              </li>
+              <li>
+                <MapsLink>
+                  <span className="sr-only">Hartă</span>
+                  <Icon name="pin" size={20} />
+                </MapsLink>
+              </li>
+            </ul>
           </div>
 
           <div>

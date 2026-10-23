@@ -24,16 +24,18 @@ export default function Home() {
       {/* ================= HERO ================= */}
       <section className="hero">
         <div className="hero-bg">
-          <img
-            src={heroImage.src}
-            srcSet={heroImage.srcSet}
-            sizes="100vw"
-            alt={heroImage.alt}
-            fetchPriority="high"
-            decoding="async"
-            width="2400"
-            height="3000"
-          />
+          <picture>
+            <source media="(max-width: 760px)" srcSet={heroImage.mobileSrcSet} sizes="100vw" />
+            <img
+              src={heroImage.src}
+              srcSet={heroImage.srcSet}
+              sizes="100vw"
+              alt={heroImage.alt}
+              fetchPriority="high"
+              width="2400"
+              height="3000"
+            />
+          </picture>
         </div>
         <div className="hero-veil" aria-hidden="true" />
 
@@ -64,7 +66,13 @@ export default function Home() {
               Sună acum<span className="hide-sm"> · {main.display}</span>
             </span>
           </a>
-          <a className="hero-wa hero-in" style={{ '--d': '0.72s' }} href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+          <a
+            className="hero-wa hero-in"
+            style={{ '--d': '0.72s' }}
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             sau scrie-ne pe <strong>WhatsApp</strong>
           </a>
         </div>
@@ -78,7 +86,9 @@ export default function Home() {
             <h2>
               Tot ce e textil în casă, <em>curat ca nou.</em>
             </h2>
-            <p className="lead">Covoarele și păturile le ridicăm și le spălăm la atelier. Restul le curățăm la tine acasă.</p>
+            <p className="lead">
+              Covoarele și păturile le ridicăm și le spălăm la atelier. Restul le curățăm la tine acasă.
+            </p>
           </header>
 
           <ol className="svc-list reveal-group">
@@ -156,7 +166,11 @@ export default function Home() {
             </p>
           </div>
           <div className="reveal">
-            <LocationCard label={`${location.locality}, jud. ${location.county}`} lat={location.lat} lng={location.lng} />
+            <LocationCard
+              label={`${location.locality}, jud. ${location.county}`}
+              lat={location.lat}
+              lng={location.lng}
+            />
           </div>
         </div>
       </section>
@@ -204,7 +218,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
     </>
   );
 }
