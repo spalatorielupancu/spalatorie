@@ -1,4 +1,4 @@
-import { Logo } from './Logo';
+import { LogoStacked } from './Logo';
 import { Icon } from './Icons';
 import MapsLink from './MapsLink';
 import { company, facebookUrl, location, phones, site, whatsappUrl } from '@/data/site';
@@ -22,7 +22,7 @@ export default function Footer() {
         <div className="footer-grid">
           <div className="footer-brand">
             <a href="/" className="footer-logo" aria-label={`${site.name} — acasă`}>
-              <Logo />
+              <LogoStacked />
             </a>
             <p>
               Spălătorie de covoare în {location.locality}, jud. {location.county}. Ridicare și livrare la domiciliu.
@@ -102,11 +102,12 @@ export default function Footer() {
 
         <div className="footer-bottom">
           <p>
-            © {year} {hasCompany ? company.legalName : site.name}
+            © {year} {site.name}
             {hasCompany && (
               <>
-                {' '}· CUI {company.cui}
+                {' '}· {company.legalName} · CUI {company.cui}
                 {company.regCom && <> · {company.regCom}</>}
+                {company.address && <> · Sediu: {company.address}</>}
               </>
             )}
           </p>

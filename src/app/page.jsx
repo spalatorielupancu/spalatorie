@@ -22,8 +22,8 @@ export default function Home() {
   return (
     <>
       {/* ================= HERO ================= */}
-      <section className="hero">
-        <div className="hero-bg">
+      <section className="hero" data-parallax-scope>
+        <div className="hero-bg layer" data-depth="0.15">
           <picture>
             <source media="(max-width: 760px)" srcSet={heroImage.mobileSrcSet} sizes="100vw" />
             <img
@@ -33,14 +33,14 @@ export default function Home() {
               alt={heroImage.alt}
               fetchPriority="high"
               width="2400"
-              height="3000"
+              height="1600"
             />
           </picture>
         </div>
         <div className="hero-veil" aria-hidden="true" />
 
         <div className="container hero-content">
-          <p className="eyebrow hero-in" style={{ '--d': '0.1s' }}>
+          <p className="eyebrow eyebrow--light hero-in" style={{ '--d': '0.1s' }}>
             <span>
               <span className="hide-sm">Spălătorie de covoare · </span>
               {location.locality}, jud. {location.county}
@@ -60,21 +60,18 @@ export default function Home() {
             Spălăm covoare în utilaje profesionale și curățăm mochete, canapele și saltele la tine acasă. Ridicăm și
             livrăm la domiciliu.
           </p>
-          <a className="btn btn--ink hero-call hero-in" style={{ '--d': '0.62s' }} href={`tel:${main.tel}`}>
-            <Icon name="phone" size={20} />
-            <span>
-              Sună acum<span className="hide-sm"> · {main.display}</span>
-            </span>
-          </a>
-          <a
-            className="hero-wa hero-in"
-            style={{ '--d': '0.72s' }}
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            sau scrie-ne pe <strong>WhatsApp</strong>
-          </a>
+          <div className="hero-actions hero-in" style={{ '--d': '0.62s' }}>
+            <a className="btn btn--light hero-call" href={`tel:${main.tel}`}>
+              <Icon name="phone" size={20} />
+              <span>
+                Sună acum<span className="hide-sm"> · {main.display}</span>
+              </span>
+            </a>
+            <a className="btn btn--ghost" href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+              <Icon name="whatsapp" size={20} />
+              WhatsApp
+            </a>
+          </div>
         </div>
       </section>
 

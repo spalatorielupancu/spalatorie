@@ -19,7 +19,9 @@ export default function Confidentialitate() {
 
         <p>
           Acest site aparține {operator}
-          {company.cui && <>, CUI {company.cui}</>}. Respectăm Regulamentul (UE) 2016/679 (GDPR).
+          {company.cui && <>, CUI {company.cui}</>}
+          {company.regCom && <>, {company.regCom}</>}
+          {company.address && <>, cu sediul în {company.address}</>}. Respectăm Regulamentul (UE) 2016/679 (GDPR).
         </p>
 
         <h2>Ce date colectăm</h2>

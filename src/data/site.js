@@ -64,11 +64,12 @@ export const serviceArea = [
   'Dărmănești',
 ];
 
-// TODO: date firmă — OBLIGATORII în footer înainte de lansare
+// Datele firmei (apar în footer și în pagina de confidențialitate) — din documentele primite de la client
 export const company = {
-  legalName: '', // ex: LUPANCU SERV SRL
-  cui: '', // ex: RO12345678
-  regCom: '', // ex: J33/123/2018
+  legalName: 'IVY SRA SRL',
+  cui: '40126858',
+  regCom: 'J33/2346/2021',
+  address: 'Satu Mare nr. 608, jud. Suceava', // sediul social
 };
 
 // ------------------------------------------------------------
@@ -80,14 +81,18 @@ export const company = {
 const unsplash = (id, w = 1200) =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=72`;
 
-// Hero: poză luminoasă, aceeași pe telefon și pe desktop, în mai multe mărimi.
-const heroId = 'photo-1534889156217-d643df14f14a'; // sufragerie albă, luminoasă, cu un covor oriental
+// Hero: poza pe tot ecranul, sub un voal albastru-noapte.
+// Cerem de la Unsplash variante deja tăiate: late pentru desktop, înalte pentru telefon (fără poze uriașe).
+// heroFocusY = unde e centrată tăietura pe verticală (0 = sus, 1 = jos) — aici, spre covor.
+const heroId = 'photo-1534889156217-d643df14f14a'; // sufragerie luminoasă cu un covor oriental roșu
+const heroFocusY = 0.62;
+const heroCrop = (w, ratio, q) =>
+  `https://images.unsplash.com/${heroId}?auto=format&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=${heroFocusY}&w=${w}&h=${Math.round(w * ratio)}&q=${q}`;
 export const heroImage = {
-  src: unsplash(heroId, 2400),
-  srcSet: [1000, 1600, 2400].map((w) => `${unsplash(heroId, w)} ${w}w`).join(', '),
-  // pe telefon: cel mult 1000 px, chiar și pe ecranele de înaltă densitate (încărcare mai rapidă)
-  mobileSrcSet: [600, 1000].map((w) => `${unsplash(heroId, w)} ${w}w`).join(', '),
-  alt: 'Sufragerie luminoasă cu un covor oriental curat',
+  src: heroCrop(2400, 0.625, 72),
+  srcSet: [1200, 1800, 2400].map((w) => `${heroCrop(w, 0.625, 72)} ${w}w`).join(', '),
+  mobileSrcSet: [600, 900].map((w) => `${heroCrop(w, 1.75, 70)} ${w}w`).join(', '),
+  alt: 'Sufragerie luminoasă cu un covor oriental roșu, curat',
 };
 
 export const images = {
@@ -101,15 +106,16 @@ export const images = {
   blankets: unsplash('photo-1734553529922-bc020a21643b'), // pături împăturite
 };
 
-// Galerie — TODO: înlocuiește cu poze REALE ale clientului (covoare spălate, atelier, livrări).
-// Primele 6 poze se afișează în grilă; prima e cea mare.
+// Galerie — poze gratuite de pe Unsplash (licență Unsplash: uz comercial permis).
+// TODO: când primești poze reale (covoare spălate, atelier, livrări), înlocuiește-le aici.
+// Primele 6 poze se afișează; prima e cea mare.
 export const gallery = [
-  { src: unsplash('photo-1777829760115-690421df9d6a', 1400), caption: 'Uscare la aer', alt: 'Covoare persane întinse la uscat' },
-  { src: unsplash('photo-1760519663238-6cfdf81416db', 800), caption: 'Culori vii', alt: 'Covor cu model geometric în lumina soarelui' },
-  { src: unsplash('photo-1671576518293-113ca5c64648', 800), caption: 'Lână, rulată', alt: 'Covor din lână rulat, în prim-plan' },
-  { src: unsplash('photo-1764432857157-68c81f3e870d', 800), caption: 'Franjuri', alt: 'Marginea cu franjuri a unui covor roșu' },
-  { src: unsplash('photo-1756361771334-2185911bfff5', 800), caption: 'Medalion persan', alt: 'Detaliu de medalion floral pe un covor persan' },
-  { src: unsplash('photo-1726207285967-e27f20a27f1a', 800), caption: 'Fibre de lână', alt: 'Textura fibrelor de lână ale unui covor' },
+  { src: unsplash('photo-1768411471062-022bc8d7fa6d', 1400), caption: 'Lumină naturală', alt: 'Covor cu motive florale în lumina soarelui' },
+  { src: unsplash('photo-1791340447616-c884551ffc44', 800), caption: 'Culori vii', alt: 'Covor albastru cu motive florale roșii și verzi' },
+  { src: unsplash('photo-1762012751357-c3eba1d494e8', 800), caption: 'Model clasic', alt: 'Covor roșu cu model geometric tradițional' },
+  { src: unsplash('photo-1760444731155-e01b22bd6501', 800), caption: 'Țesătură modernă', alt: 'Covor galben cu textură, întins pe o podea de lemn' },
+  { src: unsplash('photo-1764923519969-1e0d5b50cf8c', 800), caption: 'Culori calde', alt: 'Covor persan cu motive portocalii și albastre' },
+  { src: unsplash('photo-1777829760610-dd0accb8818f', 800), caption: 'Model oriental', alt: 'Covor oriental alb cu motive roșii și albastre' },
 ];
 
 // Înainte / după — se afișează DOAR când există o pereche reală de poze a clientului.

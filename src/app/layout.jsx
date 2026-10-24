@@ -4,7 +4,7 @@ import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import MotionInit from '@/components/MotionInit';
-import { images, location, phones, serviceArea, services, site } from '@/data/site';
+import { company, images, location, phones, serviceArea, services, site } from '@/data/site';
 
 // Fonturile se descarcă la build și se servesc de pe site (fără cereri către Google la vizită).
 // latin-ext = diacritice românești (ă, â, î, ș, ț).
@@ -52,6 +52,8 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'DryCleaningOrLaundry',
   name: site.name,
+  ...(company.legalName && { legalName: company.legalName }),
+  ...(company.cui && { taxID: company.cui }),
   description: site.description,
   url: site.url,
   image: images.og,
