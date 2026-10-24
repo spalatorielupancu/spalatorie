@@ -37,8 +37,13 @@ export const metadata = {
     siteName: site.name,
     title: `${site.name} — ${site.tagline}`,
     description: site.description,
-    // TODO: o imagine 1200×630 proprie în /public/og.jpg arată mult mai bine la distribuirea pe WhatsApp/Facebook
-    images: [{ url: images.og, width: 1800, height: 1200, alt: site.name }],
+    images: [{ url: images.og, width: 1200, height: 630, alt: `${site.name} — covor curat într-o sufragerie luminoasă` }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `${site.name} — ${site.tagline}`,
+    description: site.description,
+    images: [images.og],
   },
   formatDetection: { telephone: true },
 };

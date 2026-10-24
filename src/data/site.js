@@ -97,7 +97,8 @@ export const heroImage = {
 
 export const images = {
   hero: heroImage.src,
-  og: unsplash('photo-1531162805941-58330188d75c', 1800), // previzualizare WhatsApp/Facebook
+  // previzualizarea pe WhatsApp/Facebook: poza din hero (covorul roșu), tăiată 1200×630, JPG (format citit de toate aplicațiile)
+  og: `https://images.unsplash.com/${heroId}?fm=jpg&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=${heroFocusY}&w=1200&h=630&q=80`,
   rugFringe: unsplash('photo-1600166898405-da9535204843'), // covor cu franjuri
   carpet: unsplash('photo-1786361928673-02a91f8c92ac'), // mochetă în lumină laterală
   sofa: unsplash('photo-1686178827149-6d55c72d81df'), // curățare tapițerie
