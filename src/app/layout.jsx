@@ -79,6 +79,15 @@ const jsonLd = {
   })),
 };
 
+// Numele site-ului afișat de Google în rezultate (în loc de adresa „spalatorialupancu.ro”)
+const websiteLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: site.name,
+  alternateName: 'Spalatoria Lupancu',
+  url: `${site.url}/`,
+};
+
 export default function RootLayout({ children }) {
   // conexiunea spre serverul de poze se deschide din timp, ca poza din hero să apară mai repede
   preconnect('https://images.unsplash.com');
@@ -96,6 +105,7 @@ export default function RootLayout({ children }) {
         <main id="continut">{children}</main>
         <Footer />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteLd) }} />
       </body>
     </html>
   );
