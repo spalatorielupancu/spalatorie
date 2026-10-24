@@ -44,8 +44,7 @@ export const location = {
   locality: 'Satu Mare',
   county: 'Suceava',
   country: 'RO',
-  // TODO: adresa exactă (stradă, număr), dacă vrea să fie afișată
-  street: '',
+  street: 'Str. Nicolae Labiș nr. 6', // adresa atelierului (apare în footer și în datele pentru Google)
   lat: 47.8366948,
   lng: 25.992857,
   mapsUrl: 'https://maps.app.goo.gl/aTnDJJHDGhdny8xz5',
