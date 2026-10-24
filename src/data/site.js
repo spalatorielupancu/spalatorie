@@ -7,8 +7,7 @@
 export const site = {
   name: 'Spălătoria Lupancu',
   tagline: 'Spălătorie profesională de covoare',
-  // TODO: domeniul final (folosit pentru SEO, sitemap și previzualizările pe WhatsApp/Facebook)
-  url: 'https://www.spalatorialupancu.ro',
+  url: 'https://spalatorialupancu.ro', // domeniul final (SEO, sitemap, previzualizări); www redirecționează aici
   description:
     'Spălătorie profesională de covoare în Satu Mare, jud. Suceava. Ridicare și livrare la domiciliu, curățare mochetă, canapele și saltele direct la tine acasă.',
   yearsExperience: 8,
